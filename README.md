@@ -6,7 +6,7 @@ This guide walks you through setting up a Django project using Python 3.13 in a 
 
 **Purpose**: Create and navigate into a folder where your Python virtual environment and Django project will live.
 
-**Tip**: Replace python3.13 with any meaningful folder name if you're using a different Python version.
+**Tip**: Replace `python3.13` with any meaningful folder name if you're using a different Python version.
 
 ```shell
 mkdir python3.13 && cd python3.13
