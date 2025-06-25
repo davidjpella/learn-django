@@ -1,0 +1,82 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Hello World",
+      "content": "This is your first post!"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Django Rocks",
+      "content": "Django makes web development fast and clean."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Getting Started with Python",
+      "content": "Python is a powerful and easy-to-learn language."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "Understanding Views",
+      "content": "Views in Django control the logic of your application."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "Working with Models",
+      "content": "Models define the structure of your database tables."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 6,
+    "fields": {
+      "title": "Admin Interface",
+      "content": "Django's admin is auto-generated and customizable."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 7,
+    "fields": {
+      "title": "Migrations in Django",
+      "content": "Migrations help you evolve your database schema."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 8,
+    "fields": {
+      "title": "Templates and Rendering",
+      "content": "Templates control how your content is displayed."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 9,
+    "fields": {
+      "title": "Routing with URLs",
+      "content": "URLs map HTTP paths to views in Django."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 10,
+    "fields": {
+      "title": "Deploying Django Projects",
+      "content": "Django can be deployed on many platforms including Heroku and DigitalOcean."
+    }
+  }
+]

@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
+
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the blog index.")
+    posts = Post.objects.all()
+    return render(request, 'blog/index.html', {
+        'posts': posts
+    })
