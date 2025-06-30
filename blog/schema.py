@@ -1,11 +1,31 @@
 import graphene
 from graphene import relay
-from graphene_django import DjangoObjectType
+from graphene_django import DjangoObjectType, DjangoListField
 from graphene_django.filter import DjangoFilterConnectionField
+from .models import Post, Author, Comment
 
-from .models import Post
+
+class AuthorType(DjangoObjectType):
+    posts_count = graphene.Int()
+
+    class Meta:
+        model = Author
+        filter_fields = {
+            'id': ['exact'],
+            'name': ['exact', 'icontains', 'istartswith'],
+        }
+        interfaces = (relay.Node,)
+
+    def __init__(self):
+        self.posts = None
+
+    def resolve_posts_count(self, info):
+        return getattr(self, "posts_count", self.posts.count())
+
 
 class PostType(DjangoObjectType):
+    comments_count = graphene.Int()
+    
     class Meta:
         model = Post
         filter_fields = {
@@ -16,8 +36,48 @@ class PostType(DjangoObjectType):
         }
         interfaces = (relay.Node,)
 
+    def __init__(self):
+        self.comments = None
+
+    def resolve_comments_count(self, info):
+        return self.comments.count()
+
+
+class CommentType(DjangoObjectType):
+    class Meta:
+        model = Comment
+        filter_fields = {
+            'id': ['exact'],
+            'content': ['exact', 'icontains', 'istartswith'],
+        }
+        interfaces = (relay.Node,)
+
+
+class AuthorMutation(graphene.Mutation):
+    class Arguments:
+        name = graphene.String(required=True)
+
+    author = graphene.Field(AuthorType)
+
+    @classmethod
+    def mutate(cls, root, info, name):
+        author = Author.objects.create(name=name)
+        return AuthorMutation(author=author)
+
+
 class Query(graphene.ObjectType):
+    author = relay.Node.Field(AuthorType)
+    authors = DjangoFilterConnectionField(AuthorType)
+
     post = relay.Node.Field(PostType)
     posts = DjangoFilterConnectionField(PostType)
 
-schema = graphene.Schema(query=Query)
+    comment = relay.Node.Field(CommentType)
+    comments = DjangoFilterConnectionField(CommentType)
+
+
+class Mutation(graphene.ObjectType):
+    create_author = AuthorMutation.Field()
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
