@@ -1,12 +1,18 @@
 import graphene
-import blog.schema
+from learn_django.blog.graphql import schema
 
 
-class Query(blog.schema.Query, graphene.ObjectType):
+class Query(
+    schema.Query,
+    graphene.ObjectType
+):
     pass
 
 
-class Mutation(graphene.ObjectType):
+class Mutation(
+    schema.Mutation,
+    graphene.ObjectType
+):
     pass
 
 
