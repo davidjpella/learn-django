@@ -1,6 +1,6 @@
 import graphene
 from graphene import relay
-from graphene_django import DjangoObjectType
+from graphene_django import DjangoObjectType, DjangoListField
 from ..models import Post, Author, Comment
 
 
@@ -23,7 +23,7 @@ class AuthorType(DjangoObjectType):
 
 
 class PostType(DjangoObjectType):
-    comments_count = graphene.Int()
+    comments = DjangoListField(lambda: CommentType)
 
     class Meta:
         model = Post
@@ -35,11 +35,11 @@ class PostType(DjangoObjectType):
         }
         interfaces = (relay.Node,)
 
-    def __init__(self):
-        self.comments = None
-
-    def resolve_comments_count(self, info):
-        return self.comments.count()
+    # def resolve_author(self, info):
+    #     return self.author
+    #
+    # def resolve_comments(self, info):
+    #     return self.comments
 
 
 class CommentType(DjangoObjectType):
