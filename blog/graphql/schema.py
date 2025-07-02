@@ -4,5 +4,7 @@ from .mutations import Mutation
 from .queries import Query
 
 schema = graphene.Schema(
-    query=Query, mutation=Mutation, auto_camelcase=True
+    query=Query,
+    mutation=Mutation,
+    auto_camelcase=True
 )
