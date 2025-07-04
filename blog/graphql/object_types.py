@@ -50,7 +50,6 @@ class PostFilter(FilterSet):
 
 class PostType(DjangoObjectType):
     class Meta:
-        name = 'Post'
         model = Post
         filterset_class = PostFilter
         interfaces = (relay.Node,)
