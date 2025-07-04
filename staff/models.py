@@ -15,7 +15,7 @@ class Staff(models.Model):
 
     name = models.CharField(max_length=255)
     birthday = models.DateField()
-    role = models.CharField(max_length=1, choices=ROLE_CHOICES, default=STAFF)
+    role = models.CharField(max_length=2, choices=ROLE_CHOICES, default=STAFF)
     phone = models.CharField(max_length=255)
     email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True)
