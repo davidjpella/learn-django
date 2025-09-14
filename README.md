@@ -35,7 +35,7 @@ mkdir starter
 Create a new Django project named app inside the starter directory.
 
 ```shell
-django-admin startproject app starter
+django-admin startproject core starter
 ```
 
 ## Navigate to the Project Directory
