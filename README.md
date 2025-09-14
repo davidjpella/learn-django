@@ -82,6 +82,13 @@ python manage.py createsuperuser
 
 Visit `http://127.0.0.1:8000/admin/` to access the Django admin with your superuser credentials.
 
-````shell
+```shell
 python manage.py runserver
-````
+```
+
+
+## Register
+If you want to see all the Python packages installed in your current environment along with their versions, you can run: This file can then be used to replicate the environment elsewhere:
+```shell
+pip freeze > requirements.txt
+```
